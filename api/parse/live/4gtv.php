@@ -48,8 +48,8 @@ function curl_get($url)
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
     curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
-    curl_setopt($curl, CURLOPT_PROXY, '192.168.10.171'); //http代理服务器地址
-    curl_setopt($curl, CURLOPT_PROXYPORT, '6152'); //http代理服务器端口
+    //curl_setopt($curl, CURLOPT_PROXY, '192.168.10.171'); //http代理服务器地址
+    //curl_setopt($curl, CURLOPT_PROXYPORT, '6152'); //http代理服务器端口
     curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
     curl_setopt($curl, CURLOPT_ENCODING, '');
     $data = curl_exec($curl);
