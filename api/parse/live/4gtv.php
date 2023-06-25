@@ -61,17 +61,16 @@ function curl_get($url)
     }
 }
 
-function findString($str, $start, $end)
-{
+function findString($str, $start, $end){
     $from_pos = strpos($str, $start);
     $end_pos = strpos($str, $end);
     return substr($str, $from_pos, ($end_pos - $from_pos + 1));
 }
 $data = curl_get("https://app.4gtv.tv/Data/HiNet/GetURL.ashx?Type=LIVE&Content={$channel}");
-var_dump($data);exit;
-$data = json_decode(findString(curl_get("https://app.4gtv.tv/Data/HiNet/GetURL.ashx?Type=LIVE&Content=" . $channel), "{", "}"), true)['VideoURL'];
+$data = json_decode(findString($data, "{", "}"), true)['VideoURL'];
 $key = "VxzAfiseH0AbLShkQOPwdsssw5KyLeuv";
 $iv = substr($data, 0, 16);
 $streamurl = openssl_decrypt(base64_decode(substr($data, 16)), "AES-256-CBC", $key, 1, $iv);
+echo $streamurl;exit;
 header("Location: " . $streamurl);
 exit;
