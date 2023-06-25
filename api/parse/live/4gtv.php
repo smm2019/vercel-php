@@ -51,11 +51,12 @@ function get_ts($ts = '') {
     echo $ts_url;exit;
     preg_match('|([0-9]+).ts|', $ts_url, $_temp);
     $ts_name = $_temp[0];
-    //$code=curl_get($ts_url);
+    $code = curl_get($ts_url);
     header('Content-Type: application/octet-stream');
     header("Content-Transfer-Encoding: Binary");
     header("Content-disposition: attachment; filename={$ts_name}");
-    readfile($ts_url);
+    //readfile($ts_url);
+    echo $code;
 }
 
 
