@@ -9,7 +9,7 @@
   "routes": [
     { "src": "/",  "dest": "api/index.php" },
     { "src": "/live/(.*).php",  "dest": "api/parse/live/$1.php" },
-    { "src": "PLTV/8888/(.*)/(.*).m3u8(.*)",  "dest": "api/parse/live/$1/index.php?id=$2 [QSA]" },
-    { "src": "TVOD/8888/(.*)/(.*).m3u8(.*)",  "dest": "api/parse/live/$1/index.php?id=$2 [QSA]" },
+    { "src": "/PLTV/8888/(.*)/(.*).m3u8(.*)",  "dest": "api/parse/live/$1/index.php?id=$2 [QSA]" },
+    { "src": "/TVOD/8888/(.*)/(.*).m3u8(.*)",  "dest": "api/parse/live/$1/index.php?id=$2 [QSA]" },
   ]
 }
