@@ -48,7 +48,8 @@ function get_ts($ts = '') {
     $channel = $arr[0].'-'.$arr[1];
     $domain = "https://4gtvfreehinetpc-cds.cdn.hinet.net/live/pool/{$channel}/4gtv-live-mid/";
     $ts_url = $domain.$ts;
-    echo $ts_url;exit;
+    $ts_url = str_replace('.ts&token=', '.ts?token=', $ts_url);
+    //echo $ts_url;exit;
     preg_match('|([0-9]+).ts|', $ts_url, $_temp);
     $ts_name = $_temp[0];
     $code = curl_get($ts_url);
