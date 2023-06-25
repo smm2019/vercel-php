@@ -27,15 +27,16 @@ function get_m3u8($channel) {
     $domain="https://4gtvfreehinetpc-cds.cdn.hinet.net/live/pool/{$channel}/4gtv-live-mid/";
     $code = curl_get($domain.$streamurl);
     $code = preg_replace_callback('/(.*).ts\?token=(.*)/', 'forReplace', $code);
-    //header("Content-Type: text/plain");
+    header("Content-Type: text/plain");
     //header('Content-Type: application/vnd.apple.mpegurl');
     //header("Content-Disposition: attachment; filename=mnf.m3u8");
     echo $code;
 }
 
 function forReplace($m) {
-    $domain = 'http://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
+    //$domain = 'http://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
     //echo 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
+    $domain = 'https://php.vercel.stncp.top/live/4gtv.php';
     return $domain.'?ts='.base64_encode($m[1].'.ts&token='.$m[2]);
 }
 
