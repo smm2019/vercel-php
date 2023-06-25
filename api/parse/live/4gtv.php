@@ -67,7 +67,8 @@ function findString($str, $start, $end)
     $end_pos = strpos($str, $end);
     return substr($str, $from_pos, ($end_pos - $from_pos + 1));
 }
-
+$data = curl_get("https://app.4gtv.tv/Data/HiNet/GetURL.ashx?Type=LIVE&Content={$channel}");
+var_dump($data);exit;
 $data = json_decode(findString(curl_get("https://app.4gtv.tv/Data/HiNet/GetURL.ashx?Type=LIVE&Content=" . $channel), "{", "}"), true)['VideoURL'];
 $key = "VxzAfiseH0AbLShkQOPwdsssw5KyLeuv";
 $iv = substr($data, 0, 16);
