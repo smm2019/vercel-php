@@ -6,7 +6,6 @@
   },
   "routes": [
     { "src": "/",  "dest": "api/index.php" },
-    { "src": "/(.*).php",  "dest": "api/parse/live/$1.php" },
-    { "src": "/huya.php",  "dest": "api/parse/live/huya.php" }
+    { "src": "/(.*).php",  "dest": "api/parse/live/$1.php" }
   ]
 }
