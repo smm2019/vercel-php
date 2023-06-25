@@ -25,7 +25,7 @@ function get_m3u8($channel) {
     echo $count;var_dump($m3u8_arr);
     $streamurl = $m3u8_arr[$count-2];
     $code = curl_get($streamurl);
-    $code = preg_replace_callback('/(.*).ts\?token=(.*)/', forReplace, $code);
+    $code = preg_replace_callback('/(.*).ts\?token=(.*)/', 'forReplace', $code);
     header("Content-Type: text/plain");
     //header('Content-Type: application/vnd.apple.mpegurl');
     //header("Content-Disposition: attachment; filename=mnf.m3u8");
