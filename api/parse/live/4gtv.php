@@ -1,26 +1,12 @@
 <?php
-error_reporting(0);
+//error_reporting(0);
+//https://php.vercel.stncp.top/live/4gtv.php?id=litv-longturn03
 $channel = isset($_GET['id']) ?$_GET['id']: "litv-longturn03";
 $ts = isset($_GET['ts']) ?$_GET['ts']: null;
 if ($ts) {
     get_ts($ts);
 } else {
     get_m3u8($channel);
-}
-
-
-function get_m3u8_list($channel) {
-    $url = "https://app.4gtv.tv/Data/HiNet/GetURL.ashx?Type=LIVE&Content={$channel}";
-    $code = curl_get($url);
-    $code = findString($code, "{", "}");
-    $json = json_decode($code, true);
-    $data = $json['VideoURL'];
-    $key = "VxzAfiseH0AbLShkQOPwdsssw5KyLeuv";
-    $iv = substr($data, 0, 16);
-    $streamurl = openssl_decrypt(base64_decode(substr($data, 16)), "AES-256-CBC", $key, 1, $iv);
-    $m3u8_list = curl_get($streamurl);
-    return $m3u8_list;
-
 }
 
 function get_m3u8($channel) {
@@ -32,10 +18,11 @@ function get_m3u8($channel) {
     $key = "VxzAfiseH0AbLShkQOPwdsssw5KyLeuv";
     $iv = substr($data, 0, 16);
     $streamurl = openssl_decrypt(base64_decode(substr($data, 16)), "AES-256-CBC", $key, 1, $iv);
+    echo $streamurl;
     $m3u8_list = curl_get($streamurl);
     $m3u8_arr = explode("\n", $m3u8_list);
     $count = count($m3u8_arr);
-    //echo $count;var_dump($m3u8_arr);
+    echo $count;var_dump($m3u8_arr);
     $streamurl = $m3u8_arr[$count-2];
     $code = curl_get($streamurl);
     $code = preg_replace_callback('/(.*).ts\?token=(.*)/', forReplace, $code);
