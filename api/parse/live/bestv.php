@@ -28,9 +28,9 @@ function get_live($domain, $id = 'dfyshd8m/8000000') {
         $current .= $stream.$timestamp.".ts"."\r\n";
         $timestamp = $timestamp + 1;
     }
-    //header("Content-Type: text/plain");
-    header('Content-Type: application/vnd.apple.mpegurl');
-    header("Content-Disposition: attachment; filename=mnf.m3u8");
+    header("Content-Type: text/plain");
+    //header('Content-Type: application/vnd.apple.mpegurl');
+    //header("Content-Disposition: attachment; filename=mnf.m3u8");
     echo $current;
 }
 
