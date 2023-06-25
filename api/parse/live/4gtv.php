@@ -18,15 +18,15 @@ function get_m3u8($channel) {
     $key = "VxzAfiseH0AbLShkQOPwdsssw5KyLeuv";
     $iv = substr($data, 0, 16);
     $streamurl = openssl_decrypt(base64_decode(substr($data, 16)), "AES-256-CBC", $key, 1, $iv);
-    echo $streamurl;
+    //echo $streamurl;
     $m3u8_list = curl_get($streamurl);
     $m3u8_arr = explode("\n", $m3u8_list);
     $count = count($m3u8_arr);
-    echo $count;var_dump($m3u8_arr);
+    //echo $count;var_dump($m3u8_arr);
     $streamurl = $m3u8_arr[$count-2];
     $code = curl_get($streamurl);
     $code = preg_replace_callback('/(.*).ts\?token=(.*)/', 'forReplace', $code);
-    header("Content-Type: text/plain");
+    //header("Content-Type: text/plain");
     //header('Content-Type: application/vnd.apple.mpegurl');
     //header("Content-Disposition: attachment; filename=mnf.m3u8");
     echo $code;
