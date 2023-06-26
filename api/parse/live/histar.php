@@ -34,6 +34,8 @@ function get_curl_contents($url, $header = 0, $nobody = 0, $headers = null, $pos
     curl_setopt($c, CURLOPT_NOBODY, $nobody); //如果你不想在输出中包含body部分，设置这个选项为一个非零值。
     curl_setopt($c, CURLOPT_RETURNTRANSFER, true); //设定是否显示头信息
     //curl_setopt($c, CURLOPT_FOLLOWLOCATION, true); //设定是否跟随重定向
+    //curl_setopt($curl, CURLOPT_PROXY, '142.4.112.151'); //http代理服务器地址
+    //curl_setopt($curl, CURLOPT_PROXYPORT, '44667'); 
     if ($headers) {
         curl_setopt($c, CURLOPT_HTTPHEADER, $headers);
     }
