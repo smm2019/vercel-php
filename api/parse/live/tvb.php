@@ -1,3 +1,19 @@
+<?php
+/*
+    恩山論壇GeJI
+    .php?id=0 翡翠台
+    .php?id=1 J2
+    .php?id=2 無線新聞台
+    .php?id=3 無線新聞台576P
+    .php?id=4 無線新聞台·海外版
+    .php?id=5 無線新聞台·海外版360P
+    .php?id=6 無線財經體育資訊台·海外版
+    .php?id=7 無線財經體育資訊台·海外版360P
+    .php?id=8 事件直播頻道1
+    .php?id=9 事件直播頻道1 360P
+    .php?id=10 事件直播頻道2
+    .php?id=11 事件直播頻道2 360P
+*/
 $id = $_GET['id']??0;
 $ids = ['I-J','I-J2','C','C','I-NEWS','I-NEWS','I-FINA','I-FINA','NEVT1','NEVT1','NEVT2','NEVT2'];
 if(!isset($ids[$id])) {
