@@ -1,5 +1,5 @@
 <?php
-$host= $_ENV("POSTGRES_HOST");
+$host= $_ENV["POSTGRES_HOST"];
 print_r('host', $host);
 echo $host;
 //var_dump($_ENV("POSTGRES_URL"));echo '<br>';
