@@ -1,18 +1,12 @@
 <?php
-$host= $_ENV["POSTGRES_HOST"];
-print_r('host', $host);
-echo $host;
-//var_dump($_ENV("POSTGRES_URL"));echo '<br>';
-/*
-echo $_ENV(POSTGRES_URL_NON_POOLING);echo '<br>';
-echo $_ENV(POSTGRES_PRISMA_URL);echo '<br>';
-echo $_ENV(POSTGRES_USER);echo '<br>';
-echo $_ENV(POSTGRES_HOST);echo '<br>';
-echo $_ENV(POSTGRES_PASSWORD);echo '<br>';
-echo $_ENV(POSTGRES_DATABASE);echo '<br>';
+$host=$_ENV["POSTGRES_HOST"];
+$data=$_ENV["POSTGRES_DATABASE"];
+$user=$_ENV["POSTGRES_USER"];
+$pass=$_ENV["POSTGRES_PASSWORD"];
 
 
-$conn_string = "host=ep-restless-lake-843526.us-east-1.postgres.vercel-storage.com port=5432 dbname=verceldb user=default password=Cb49hWnYOtaK";
-$dbconn4 = pg_connect($conn_string);
-var_dump($dbconn4);
-*/
+$conn_string = "host=$host dbname=$data user=$user password=$pass";
+echo $conn_string;
+$dbconn = pg_connect($conn_string);
+var_dump($dbconn);
+
