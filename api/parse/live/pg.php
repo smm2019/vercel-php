@@ -1,6 +1,8 @@
 <?php
-
-var_dump($_ENV("POSTGRES_URL"));echo '<br>';
+$host= $_ENV("POSTGRES_HOST");
+print_r('host', $host);
+echo $host;
+//var_dump($_ENV("POSTGRES_URL"));echo '<br>';
 /*
 echo $_ENV(POSTGRES_URL_NON_POOLING);echo '<br>';
 echo $_ENV(POSTGRES_PRISMA_URL);echo '<br>';
