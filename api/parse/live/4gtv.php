@@ -41,7 +41,7 @@ function forReplace($m) {
 }
 
 
-function get_ts($ts = '') {
+function get_ts2($ts = '') {
     //$ts = 'bGl0di1sb25ndHVybjAzLWF1ZGlvXzIwMDAwPTY0MDAwLXZpZGVvPTI5MzYwMDAtNjY4OTgxNzcudHMmdG9rZW49SEt6dmQ3dG80YUVDcHJRSGQwNzVfQSZleHBpcmVzPTE2ODc3MDY4MjEmdG9rZW4xPUJRS0JjNzNGcFplMDR6MTlLQ2RqMlEmZXhwaXJlczE9MTY4NzcwNjgyMQ==';
     $ts = base64_decode($ts);
     $arr = explode('-', $ts);
