@@ -1,5 +1,6 @@
 <?php
 error_reporting(0);
+echo 'error';exit;
 //https://php.vercel.stncp.top/live/4gtv.php?id=litv-longturn03
 $channel = isset($_GET['id']) ?$_GET['id']: "litv-longturn03";
 $ts = isset($_GET['ts']) ?$_GET['ts']: null;
