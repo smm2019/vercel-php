@@ -1,6 +1,8 @@
 <?php
-error_reporting(0);
-echo 'error';exit;
+//error_reporting(0);
+echo 'error';
+exit;
+
 //https://php.vercel.stncp.top/live/4gtv.php?id=litv-longturn03
 $channel = isset($_GET['id']) ?$_GET['id']: "litv-longturn03";
 $ts = isset($_GET['ts']) ?$_GET['ts']: null;
@@ -42,7 +44,7 @@ function forReplace($m) {
 }
 
 
-function get_ts2($ts = '') {
+function get_ts($ts = '') {
     //$ts = 'bGl0di1sb25ndHVybjAzLWF1ZGlvXzIwMDAwPTY0MDAwLXZpZGVvPTI5MzYwMDAtNjY4OTgxNzcudHMmdG9rZW49SEt6dmQ3dG80YUVDcHJRSGQwNzVfQSZleHBpcmVzPTE2ODc3MDY4MjEmdG9rZW4xPUJRS0JjNzNGcFplMDR6MTlLQ2RqMlEmZXhwaXJlczE9MTY4NzcwNjgyMQ==';
     $ts = base64_decode($ts);
     $arr = explode('-', $ts);
