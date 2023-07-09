@@ -1,7 +1,5 @@
 <?php
 //error_reporting(0);
-echo 'error';
-exit;
 
 //https://huzou.eu.org/live/4gtv.php?id=litv-longturn03
 $channel = isset($_GET['id']) ?$_GET['id']: "litv-longturn03";
