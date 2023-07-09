@@ -3,7 +3,7 @@
 echo 'error';
 exit;
 
-//https://php.vercel.stncp.top/live/4gtv.php?id=litv-longturn03
+//https://huzou.eu.org/live/4gtv.php?id=litv-longturn03
 $channel = isset($_GET['id']) ?$_GET['id']: "litv-longturn03";
 $ts = isset($_GET['ts']) ?$_GET['ts']: null;
 if ($ts) {
@@ -39,7 +39,7 @@ function get_m3u8($channel) {
 function forReplace($m) {
     //$domain = 'http://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
     //echo 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
-    $domain = 'https://php.vercel.stncp.top/live/4gtv.php';
+    $domain = 'https://huzou.eu.org/live/4gtv.php';
     return $domain.'?ts='.base64_encode($m[1].'.ts&token='.$m[2]);
 }
 
