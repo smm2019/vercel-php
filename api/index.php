@@ -1,5 +1,6 @@
 <?php
-//phpinfo();
+phpinfo();
+/*
 $db = new SQLite3('/var/task/user/api/database/db.sqlite');
 
 $db->query('CREATE TABLE IF NOT EXISTS "visits" (
@@ -18,3 +19,4 @@ $visits = $db->querySingle('SELECT COUNT(id) FROM "visits"');
 echo("User visits: $visits");
 
 $db->close();
+*/
