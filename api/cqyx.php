@@ -1,12 +1,12 @@
 <?php
 // 添加 hosts 配置
 $hosts = array(
-    '118.24.228.117/live.cbncdn.cn'
+    'live.cbcdn.cn:80:118.24.228.117'
 );
 
 //Rewrite by absentfriend
 $cityId = '5A';
-$playId= $_GET['id'];
+$playId= $_GET['id']??'cctv1HD';
 $relativeId = $playId;
 $type='1';
 $appId = "kdds-chongqingdemo";
