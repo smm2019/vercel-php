@@ -1,9 +1,9 @@
 <?php
 date_default_timezone_set("Asia/Shanghai");
 $type = empty($_GET['type']) ? "nodisplay" : trim($_GET['type']);
-$id = empty($_GET['id']) ? "11342412" : trim($_GET['id']);
+$id = empty($_GET['id']) ? "shangdi" : trim($_GET['id']);
 $cdn = empty($_GET['cdn']) ? "hwcdn" : trim($_GET['cdn']);
-$media = empty($_GET['media']) ? "hls" : trim($_GET['media']);
+$media = empty($_GET['media']) ? "flv" : trim($_GET['media']);
 $roomurl = "https://m.huya.com/" . $id;
 
 function get_content($apiurl, $flag)
@@ -51,7 +51,7 @@ function aes_decrypt($ciphertext, $key, $iv)
 
 $key = "abcdefghijklmnopqrstuvwxyz123456";
 $iv = "1234567890123456";
-$mediaurl = aes_decrypt("vcnTSiZsSUWtlZRxx+FuRnM7F1b1FlSVueFKcxewvKVbe9bXE49HXuq1dHha2K7cSic4yOuClWpau1RibQeO2g==", $key, $iv);
+$mediaurl = aes_decrypt("fIuPMpBI1RpRnM2JhbYHzvwCvwhHBF7Q+8k14m9h3N5ZfubHcDCEk08TnLwHoMI/SG7bxpqT6Rh+gZunSpYHf1JM/RmEC/S1SjRYWw6rwc3gGo3Rrsl3sojPujI2aZsb", $key, $iv);
 
 $uid = json_decode(get_content("https://udblgn.huya.com/web/anonymousLogin", "uid"), true)["data"]["uid"];
 
@@ -65,8 +65,11 @@ function get_uuid()
 function process_anticode($anticode, $uid, $streamname)
 {
     parse_str($anticode, $q);
+    $q["t"] = '102';
+    $q["ctype"] = 'tars_mp';
+    $q["wsTime"] = dechex(time() + 21600);
     $q["ver"] = "1";
-    $q["sv"] = "2110211124";
+    $q["sv"] = date('YmdH');
     $q["seqid"] = strval(intval($uid) + intval(microtime(true) * 1000));
     $q["uid"] = strval($uid);
     $q["uuid"] = strval(get_uuid());
@@ -113,27 +116,27 @@ if (array_key_exists("exceptionType", $realdata)) {
     if ($media == "flv") {
         switch ($cdn) {
             case $cdn:
-                $mediaurl = $realurl["flv"][$cdn];
+                $mediaurl = str_replace("http://", "https://", $realurl["flv"][$cdn]);
                 break;
             default:
-                $mediaurl = $realurl["flv"]["hwcdn"];
+                $mediaurl = str_replace("http://", "https://", $realurl["flv"]["hwcdn"]);
                 break;
         }
     }
     if ($media == "hls") {
         switch ($cdn) {
             case $cdn:
-                $mediaurl = $realurl["hls"][$cdn];
+                $mediaurl = str_replace("http://", "https://", $realurl["hls"][$cdn]);
                 break;
             default:
-                $mediaurl = $realurl["hls"]["hwcdn"];
+                $mediaurl = str_replace("http://", "https://", $realurl["hls"]["hwcdn"]);
                 break;
         }
     }
     header('location:' . $mediaurl);
     exit();
 } elseif ($realdata["roomInfo"]["eLiveStatus"] == 3) {
-    header('location:' . "http:" . base64_decode($realdata["roomProfile"]["liveLineUrl"]));
+    header('location:' . "https:" . base64_decode($realdata["roomProfile"]["liveLineUrl"]));
     exit();
 } else {
     header('location:' . $mediaurl);
